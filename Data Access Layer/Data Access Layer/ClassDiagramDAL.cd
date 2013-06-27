@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ALG.DataAccessLayer.Connection">
+    <Position X="0.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAAgUCAEIAAgBABAAAAEAICAQABACAQBCA=</HashCode>
+      <FileName>Classes\Connection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ALG.DataAccessLayer.ClassDataAccessLayer">
+    <Position X="0.75" Y="0.75" Width="2.5" />
+    <NestedTypes>
+      <Delegate Name="ALG.DataAccessLayer.ClassDataAccessLayer.InfoMessageHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\DataAccessLayer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAEAGAAADAAAAABJEgIACAAAAYAAgAACAAAAAQAgAI=</HashCode>
+      <FileName>Classes\DataAccessLayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_metaData" />
+      <Property Name="GetActiveConnect" />
+      <Property Name="GetMetaData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ALG.DataAccessLayer.Parameters">
+    <Position X="6" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAQAAAAAAACAABAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Classes\Parameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ALG.DataAccessLayer.Query">
+    <Position X="3.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAEAAAAAAAAAACAAAAAAABBA=</HashCode>
+      <FileName>Classes\Queries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_parameters" />
+      <Field Name="_connection" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ALG.DataAccessLayer.ClassMetaData">
+    <Position X="4.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAACAAACgAACAAAAAAAAAAAgQAQAAA=</HashCode>
+      <FileName>Classes\ClassMetaData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dal" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="ALG.DataAccessLayer.MetaMessage">
+    <Position X="8.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAgAABI=</HashCode>
+      <FileName>Classes\ClassMetaData.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ALG.DataAccessLayer.CommandResult">
+    <Position X="8.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Queries.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="ALG.DataAccessLayer.CommandResultTypes">
+    <Position X="8.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAQEAAAAAAAAAAAAAAAgEAAAA=</HashCode>
+      <FileName>Classes\Queries.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
