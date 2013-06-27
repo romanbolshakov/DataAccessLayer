@@ -12,6 +12,16 @@ namespace ALG
         /// </summary>
         public class ClassDataAccessLayer
         {
+
+            /// <summary>
+            /// Событие: Запрос начал исполнение
+            /// </summary>
+            public event EventHandler QueryExecuteStartedEvent;
+            /// <summary>
+            /// Событие: Запрос завершил исполнение
+            /// </summary>
+            public event EventHandler QueryExecuteFinishedEvent;
+
             private List<Connection> _lstConnections;
             private int _intActiveIndex;
             private List<Query> _lstQueries;
@@ -340,8 +350,22 @@ namespace ALG
             public Query CreateNewQuery(Connection connection)
             {
                 Query tempQuery = new Query(connection, _isTraceMode);
+                tempQuery.QueryExecuteStartedEvent += new EventHandler(tempQuery_QueryExecuteStartedEvent);
+                tempQuery.QueryExecuteFinishedEvent += new EventHandler(tempQuery_QueryExecuteFinishedEvent);
                 //_lstQueries.Add(tempQuery);
                 return tempQuery;
+            }
+
+            void tempQuery_QueryExecuteFinishedEvent(object sender, EventArgs e) {
+                if (QueryExecuteFinishedEvent != null) {
+                    QueryExecuteFinishedEvent(sender, e);
+                }
+            }
+
+            void tempQuery_QueryExecuteStartedEvent(object sender, EventArgs e) {
+                if (QueryExecuteStartedEvent != null) {
+                    QueryExecuteStartedEvent(sender, e);
+                }
             }
 
 

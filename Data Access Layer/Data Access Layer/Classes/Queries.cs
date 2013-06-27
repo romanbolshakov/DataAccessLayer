@@ -13,6 +13,15 @@ namespace ALG
         /// </summary>
         public class Query
         {
+            /// <summary>
+            /// Событие: Запрос начал исполнение
+            /// </summary>
+            public event EventHandler QueryExecuteStartedEvent;
+            /// <summary>
+            /// Событие: Запрос завершил исполнение
+            /// </summary>
+            public event EventHandler QueryExecuteFinishedEvent;
+
             #region Закрытые переменные
 
             private Parameters _parameters;
@@ -53,9 +62,12 @@ namespace ALG
             }
 
             #region Методы
-            
+
+            delegate CommandResult ExecuteQueryDelegate(string CommandText, CommandResultTypes CommandResultType, CommandType CommandType, string ResultColumnName, int CommandTimeOut);
+
             /// <summary>
             /// Функция запуска хранимых процедур или текстовых запросов.
+            /// В процессе работы вызываются события QueryExecuteStartedEvent и QueryExecuteFinishedEvent
             /// </summary>
             /// <param name="CommandText">Текст команды или имя процедуры</param>
             /// <param name="CommandResultType">Тип возвращаемого результата</param>
@@ -63,7 +75,36 @@ namespace ALG
             /// <param name="ResultColumnName">Имя колонки с результатом</param>
             /// <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
             /// <returns>Структура с описанием результата</returns>
-            public CommandResult ExecuteQuery(string CommandText, CommandResultTypes CommandResultType, CommandType CommandType, string ResultColumnName, int CommandTimeOut)
+            public CommandResult ExecuteQuery(string CommandText, CommandResultTypes CommandResultType, CommandType CommandType, string ResultColumnName, int CommandTimeOut) 
+            {
+                ExecuteQueryDelegate executeQueryDelegate = new ExecuteQueryDelegate(ExecuteQueryWork);
+                /// Асинхронный запуск Запроса
+                IAsyncResult ar = executeQueryDelegate.BeginInvoke(
+                    CommandText, CommandResultType, CommandType, ResultColumnName,CommandTimeOut, null, null);
+                /// Событие: запрос начал исполнение
+                if (QueryExecuteStartedEvent != null) {
+                    QueryExecuteStartedEvent(this, EventArgs.Empty);
+                }
+                /// Ожидание окончания
+                CommandResult cr = executeQueryDelegate.EndInvoke(ar);
+                /// Событие: запрос завершил выполнение
+                if (QueryExecuteFinishedEvent != null) {
+                    QueryExecuteFinishedEvent(this, EventArgs.Empty);
+                }
+
+                return cr;
+            }
+
+            /// <summary>
+            /// Основная рабочая функция. (Запускается асинхронно)
+            /// </summary>
+            /// <param name="CommandText"></param>
+            /// <param name="CommandResultType"></param>
+            /// <param name="CommandType"></param>
+            /// <param name="ResultColumnName"></param>
+            /// <param name="CommandTimeOut"></param>
+            /// <returns></returns>
+            private CommandResult ExecuteQueryWork(string CommandText, CommandResultTypes CommandResultType, CommandType CommandType, string ResultColumnName, int CommandTimeOut)
             {
                 CommandResult result = new CommandResult();
                 try

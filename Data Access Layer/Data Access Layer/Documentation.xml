@@ -4,363 +4,60 @@
         <name>DAL</name>
     </assembly>
     <members>
-        <member name="T:ALG.DataAccessLayer.ClassMetaData">
+        <member name="T:ALG.DataAccessLayer.Connection">
             <summary>
-            Класс для работы с мета данными
+            Класс подключений к БД
             </summary>
         </member>
-        <member name="M:ALG.DataAccessLayer.ClassMetaData.#ctor(ALG.DataAccessLayer.ClassDataAccessLayer)">
+        <member name="M:ALG.DataAccessLayer.Connection.BuildConnection">
             <summary>
-            Конструктор
+            Строитель коннекта
             </summary>
-            <param name="DAL">Data Access Layer</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetSPNameByCode(System.Int32)">
-            <summary>
-            Возвращает имя хранимой процедуры по коду запуска
-            </summary>
-            <param name="ExecuteCode">Код запуска хранимой процедуры</param>
-            <returns>Имя хранимой процедуры</returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetSPNameByCode(System.String)">
-            <summary>
-            Возвращает имя хранимой процедуры по коду запуска
-            </summary>
-            <param name="ExecuteCode">Код запуска хранимой процедуры</param>
-            <returns>Имя хранимой процедуры</returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetMessageByCode(System.Int32)">
-            <summary>
-            Возвращает компоненты сообщения по коду
-            </summary>
-            <param name="MessageCode">Код сообщения</param>
             <returns></returns>
         </member>
-        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetMessageByCode(System.String)">
+        <member name="P:ALG.DataAccessLayer.Connection.RusName">
             <summary>
-            Возвращает компоненты сообщения по коду
-            </summary>
-            <param name="MessageCode">Код сообщения</param>
-            <returns></returns>
-        </member>
-        <member name="T:ALG.DataAccessLayer.Query">
-            <summary>
-            Класс запросов
+            Наименование коннекта (по русски)
             </summary>
         </member>
-        <member name="M:ALG.DataAccessLayer.Query.#ctor(ALG.DataAccessLayer.Connection,System.Boolean)">
+        <member name="P:ALG.DataAccessLayer.Connection.ID">
             <summary>
-            Инициализирует Parameters.
-            Присваивает Connection
-            </summary>
-            <param name="Connection">Объкт подключения к БД</param>
-            <param name="isTraceMode">Флаг отладки</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType,System.String,System.Int32)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandResultType">Тип возвращаемого результата</param>
-            <param name="CommandType">Тип команды</param>
-            <param name="ResultColumnName">Имя колонки с результатом</param>
-            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
-            <returns>Структура с описанием результата</returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandResultType.None;
-                CommandType.Text;
-                ResultColumnName = ""
-                CommandTimeout = 30;
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandType.Text;
-                ResultColumnName = ""
-                CommandTimeout = 30;
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandResultType">Тип возвращаемого результата</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                ResultColumnName = ""
-                CommandTimeout = 30;
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandResultType">Тип возвращаемого результата</param>
-            <param name="CommandType">Тип команды</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Data.CommandType,System.String)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandResultType.SingleValue;
-                CommandTimeout = 30;
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandType">Тип команды</param>
-            <param name="ResultColumnName">Имя колонки с результатом</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Int32)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandResultType.None;
-                CommandType.Text;
-                ResultColumnName = ""
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Int32)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandType.Text;
-                ResultColumnName = ""
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandResultType">Тип возвращаемого результата</param>
-            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType,System.Int32)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                ResultColumnName = ""
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="CommandResultType">Тип возвращаемого результата</param>
-            <param name="CommandType">Тип команды</param>
-            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Data.CommandType,System.String,System.Int32)">
-            <summary>
-            Функция запуска хранимых процедур или текстовых запросов.
-                
-                CommandResultType.SingleValue
-            </summary>
-            <param name="CommandText">Текст команды или имя процедуры</param>
-            <param name="ResultColumnName">Имя колонки с результатом</param>
-            <param name="CommandType">Тип команды</param>
-            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
-            <returns></returns>
-        </member>
-        <member name="T:ALG.DataAccessLayer.CommandResultTypes">
-            <summary>
-            Возможные выходы Комманд
+            Идентификатор коннекта
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResultTypes.None">
+        <member name="P:ALG.DataAccessLayer.Connection.ServerName">
             <summary>
-            Нет результата
+            Имя сервера
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResultTypes.Table">
+        <member name="P:ALG.DataAccessLayer.Connection.DataBaseName">
             <summary>
-            На выходе объект DataTable
+            Имя БД
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResultTypes.DataSet">
+        <member name="P:ALG.DataAccessLayer.Connection.UserName">
             <summary>
-            На выходе объект класса DataSet
+            Имя пользователя (имя входа)
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResultTypes.SingleValue">
+        <member name="P:ALG.DataAccessLayer.Connection.Password">
             <summary>
-            На выходе одно значение
+            Пароль
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResultTypes.Adapter">
+        <member name="P:ALG.DataAccessLayer.Connection.isWinAuth">
             <summary>
-            На выходе объект Adapter
+            Использовать Windows-проверку пользователя или нет
             </summary>
         </member>
-        <member name="T:ALG.DataAccessLayer.CommandResult">
+        <member name="P:ALG.DataAccessLayer.Connection.isActive">
             <summary>
-            Структура, которая описывает выходной результат выполнения комманды
+            Флаг активного коннекта
             </summary>
         </member>
-        <member name="F:ALG.DataAccessLayer.CommandResult.ResultType">
+        <member name="P:ALG.DataAccessLayer.Connection.sqlConnection">
             <summary>
-            Тип результата
-            </summary>
-        </member>
-        <member name="F:ALG.DataAccessLayer.CommandResult.ResultObject">
-            <summary>
-            Выходной объект. Зависит от Типа результата
-            </summary>
-        </member>
-        <member name="F:ALG.DataAccessLayer.CommandResult.isGood">
-            <summary>
-            Флаг успешного выполнения команды
-            </summary>
-        </member>
-        <member name="T:ALG.DataAccessLayer.Parameters">
-            <summary>
-            Класс параметров для хранимых процедур
-            </summary>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.#ctor">
-            <summary>
-            Конструктор. Инициализирует лист SqlParameter
-            </summary>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType)">
-            <summary>
-            Добавляет новый параметр в лист SqlParameter
-            </summary>
-            <param name="Name">Имя параметра</param>
-            <param name="Value">Значение параметра</param>
-            <param name="Type">Тип параметра</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType,System.Data.ParameterDirection)">
-            <summary>
-            Добавляет новый параметр в лист SqlParameter
-            </summary>
-            <param name="Name">Имя параметра</param>
-            <param name="Value">Значение параметра</param>
-            <param name="Type">Тип параметра</param>
-            <param name="Direction">"Направление" параметра (input, output, ...)</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType,System.Data.ParameterDirection,System.Boolean)">
-            <summary>
-            Добавляет новый параметр в лист SqlParameter
-            </summary>
-            <param name="Name">Имя параметра</param>
-            <param name="Value">Значение параметра</param>
-            <param name="Type">Тип параметра</param>
-            <param name="Direction">"Направление" параметра (input, output, ...)</param>
-            <param name="IsNullable">Флаг возможности значения "null"</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.Data.SqlClient.SqlParameter)">
-            <summary>
-            Добавляет новый параметр в лист SqlParameter
-            </summary>
-            <param name="sqlParameter">Готовый параметр</param>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.CreateParameter(System.String,System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean)">
-            <summary>
-            Создает новый SqlParameter
-            </summary>
-            <param name="Name"></param>
-            <param name="Value"></param>
-            <param name="Type"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.ClearParameters">
-            <summary>
-            Очистка листа параметров
-            </summary>
-        </member>
-        <member name="M:ALG.DataAccessLayer.Parameters.GetParameterByName(System.String)">
-            <summary>
-            Возвращает параметр по имени
-            </summary>
-            <param name="Name">Имя параметра</param>
-            <returns></returns>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Parameters.GetParameters">
-            <summary>
-            Возвращает лист SqlParameter
-            </summary>
-        </member>
-        <member name="T:ALG.DataAccessLayer.Properties.Resources">
-            <summary>
-              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.ResourceManager">
-            <summary>
-              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Culture">
-            <summary>
-              Перезаписывает свойство CurrentUICulture текущего потока для всех
-              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CaptionColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на MessageCaption.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CodeColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на MessageCode.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CommentColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на MessageComment.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_FilterExpression_part1">
-            <summary>
-              Ищет локализованную строку, похожую на MessageCode =.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_MetaTableName">
-            <summary>
-              Ищет локализованную строку, похожую на Messages.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_TextColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на MessageText.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_TypeColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на MessageType.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Meta_Messages">
-            <summary>
-              Ищет локализованную строку, похожую на Meta.sp_MessagesSelectAll.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.Meta_SPNames">
-            <summary>
-              Ищет локализованную строку, похожую на Meta.sp_StoredProceduresSelect.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_FilterExpression_part1">
-            <summary>
-              Ищет локализованную строку, похожую на ExecuteCode =.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_FilterExpression_part2">
-            <summary>
-              Ищет локализованную строку, похожую на  and isActive = 1.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_MetaTableName">
-            <summary>
-              Ищет локализованную строку, похожую на StoredProcedures.
-            </summary>
-        </member>
-        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_NameColumnName">
-            <summary>
-              Ищет локализованную строку, похожую на Name.
+            Коннект
             </summary>
         </member>
         <member name="T:ALG.DataAccessLayer.ClassDataAccessLayer">
@@ -487,6 +184,16 @@
                 0 - выключить;</param>
             <returns></returns>
         </member>
+        <member name="E:ALG.DataAccessLayer.ClassDataAccessLayer.QueryExecuteStartedEvent">
+            <summary>
+            Событие: Запрос начал исполнение
+            </summary>
+        </member>
+        <member name="E:ALG.DataAccessLayer.ClassDataAccessLayer.QueryExecuteFinishedEvent">
+            <summary>
+            Событие: Запрос завершил исполнение
+            </summary>
+        </member>
         <member name="P:ALG.DataAccessLayer.ClassDataAccessLayer.GetConnections">
             <summary>
             Возвращает список зарегистрированных коннектов
@@ -520,60 +227,385 @@
             <param name="InnerSender"></param>
             <param name="e"></param>
         </member>
-        <member name="T:ALG.DataAccessLayer.Connection">
+        <member name="T:ALG.DataAccessLayer.Query">
             <summary>
-            Класс подключений к БД
+            Класс запросов
             </summary>
         </member>
-        <member name="M:ALG.DataAccessLayer.Connection.BuildConnection">
+        <member name="M:ALG.DataAccessLayer.Query.#ctor(ALG.DataAccessLayer.Connection,System.Boolean)">
             <summary>
-            Строитель коннекта
+            Инициализирует Parameters.
+            Присваивает Connection
             </summary>
+            <param name="Connection">Объкт подключения к БД</param>
+            <param name="isTraceMode">Флаг отладки</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType,System.String,System.Int32)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+            В процессе работы вызываются события QueryExecuteStartedEvent и QueryExecuteFinishedEvent
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandResultType">Тип возвращаемого результата</param>
+            <param name="CommandType">Тип команды</param>
+            <param name="ResultColumnName">Имя колонки с результатом</param>
+            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
+            <returns>Структура с описанием результата</returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQueryWork(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType,System.String,System.Int32)">
+            <summary>
+            Основная рабочая функция. (Запускается асинхронно)
+            </summary>
+            <param name="CommandText"></param>
+            <param name="CommandResultType"></param>
+            <param name="CommandType"></param>
+            <param name="ResultColumnName"></param>
+            <param name="CommandTimeOut"></param>
             <returns></returns>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.RusName">
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String)">
             <summary>
-            Наименование коннекта (по русски)
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandResultType.None;
+                CommandType.Text;
+                ResultColumnName = ""
+                CommandTimeout = 30;
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandType.Text;
+                ResultColumnName = ""
+                CommandTimeout = 30;
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandResultType">Тип возвращаемого результата</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                ResultColumnName = ""
+                CommandTimeout = 30;
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandResultType">Тип возвращаемого результата</param>
+            <param name="CommandType">Тип команды</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandResultType.SingleValue;
+                CommandTimeout = 30;
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandType">Тип команды</param>
+            <param name="ResultColumnName">Имя колонки с результатом</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Int32)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandResultType.None;
+                CommandType.Text;
+                ResultColumnName = ""
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Int32)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandType.Text;
+                ResultColumnName = ""
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandResultType">Тип возвращаемого результата</param>
+            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,ALG.DataAccessLayer.CommandResultTypes,System.Data.CommandType,System.Int32)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                ResultColumnName = ""
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="CommandResultType">Тип возвращаемого результата</param>
+            <param name="CommandType">Тип команды</param>
+            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Query.ExecuteQuery(System.String,System.Data.CommandType,System.String,System.Int32)">
+            <summary>
+            Функция запуска хранимых процедур или текстовых запросов.
+                
+                CommandResultType.SingleValue
+            </summary>
+            <param name="CommandText">Текст команды или имя процедуры</param>
+            <param name="ResultColumnName">Имя колонки с результатом</param>
+            <param name="CommandType">Тип команды</param>
+            <param name="CommandTimeOut">Таймаут для команды (в секундах)</param>
+            <returns></returns>
+        </member>
+        <member name="E:ALG.DataAccessLayer.Query.QueryExecuteStartedEvent">
+            <summary>
+            Событие: Запрос начал исполнение
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.ID">
+        <member name="E:ALG.DataAccessLayer.Query.QueryExecuteFinishedEvent">
             <summary>
-            Идентификатор коннекта
+            Событие: Запрос завершил исполнение
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.ServerName">
+        <member name="T:ALG.DataAccessLayer.CommandResultTypes">
             <summary>
-            Имя сервера
+            Возможные выходы Комманд
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.DataBaseName">
+        <member name="F:ALG.DataAccessLayer.CommandResultTypes.None">
             <summary>
-            Имя БД
+            Нет результата
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.UserName">
+        <member name="F:ALG.DataAccessLayer.CommandResultTypes.Table">
             <summary>
-            Имя пользователя (имя входа)
+            На выходе объект DataTable
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.Password">
+        <member name="F:ALG.DataAccessLayer.CommandResultTypes.DataSet">
             <summary>
-            Пароль
+            На выходе объект класса DataSet
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.isWinAuth">
+        <member name="F:ALG.DataAccessLayer.CommandResultTypes.SingleValue">
             <summary>
-            Использовать Windows-проверку пользователя или нет
+            На выходе одно значение
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.isActive">
+        <member name="F:ALG.DataAccessLayer.CommandResultTypes.Adapter">
             <summary>
-            Флаг активного коннекта
+            На выходе объект Adapter
             </summary>
         </member>
-        <member name="P:ALG.DataAccessLayer.Connection.sqlConnection">
+        <member name="T:ALG.DataAccessLayer.CommandResult">
             <summary>
-            Коннект
+            Структура, которая описывает выходной результат выполнения комманды
+            </summary>
+        </member>
+        <member name="F:ALG.DataAccessLayer.CommandResult.ResultType">
+            <summary>
+            Тип результата
+            </summary>
+        </member>
+        <member name="F:ALG.DataAccessLayer.CommandResult.ResultObject">
+            <summary>
+            Выходной объект. Зависит от Типа результата
+            </summary>
+        </member>
+        <member name="F:ALG.DataAccessLayer.CommandResult.isGood">
+            <summary>
+            Флаг успешного выполнения команды
+            </summary>
+        </member>
+        <member name="T:ALG.DataAccessLayer.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CaptionColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на MessageCaption.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CodeColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на MessageCode.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_CommentColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на MessageComment.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_FilterExpression_part1">
+            <summary>
+              Ищет локализованную строку, похожую на MessageCode =.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_MetaTableName">
+            <summary>
+              Ищет локализованную строку, похожую на Messages.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_TextColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на MessageText.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Mes_TypeColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на MessageType.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Meta_Messages">
+            <summary>
+              Ищет локализованную строку, похожую на Meta.sp_MessagesSelectAll.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.Meta_SPNames">
+            <summary>
+              Ищет локализованную строку, похожую на Meta.sp_StoredProceduresSelect.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_FilterExpression_part1">
+            <summary>
+              Ищет локализованную строку, похожую на ExecuteCode =.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_FilterExpression_part2">
+            <summary>
+              Ищет локализованную строку, похожую на  and isActive = 1.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_MetaTableName">
+            <summary>
+              Ищет локализованную строку, похожую на StoredProcedures.
+            </summary>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Properties.Resources.SP_NameColumnName">
+            <summary>
+              Ищет локализованную строку, похожую на Name.
+            </summary>
+        </member>
+        <member name="T:ALG.DataAccessLayer.ClassMetaData">
+            <summary>
+            Класс для работы с мета данными
+            </summary>
+        </member>
+        <member name="M:ALG.DataAccessLayer.ClassMetaData.#ctor(ALG.DataAccessLayer.ClassDataAccessLayer)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="DAL">Data Access Layer</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetSPNameByCode(System.Int32)">
+            <summary>
+            Возвращает имя хранимой процедуры по коду запуска
+            </summary>
+            <param name="ExecuteCode">Код запуска хранимой процедуры</param>
+            <returns>Имя хранимой процедуры</returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetSPNameByCode(System.String)">
+            <summary>
+            Возвращает имя хранимой процедуры по коду запуска
+            </summary>
+            <param name="ExecuteCode">Код запуска хранимой процедуры</param>
+            <returns>Имя хранимой процедуры</returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetMessageByCode(System.Int32)">
+            <summary>
+            Возвращает компоненты сообщения по коду
+            </summary>
+            <param name="MessageCode">Код сообщения</param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.ClassMetaData.GetMessageByCode(System.String)">
+            <summary>
+            Возвращает компоненты сообщения по коду
+            </summary>
+            <param name="MessageCode">Код сообщения</param>
+            <returns></returns>
+        </member>
+        <member name="T:ALG.DataAccessLayer.Parameters">
+            <summary>
+            Класс параметров для хранимых процедур
+            </summary>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.#ctor">
+            <summary>
+            Конструктор. Инициализирует лист SqlParameter
+            </summary>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType)">
+            <summary>
+            Добавляет новый параметр в лист SqlParameter
+            </summary>
+            <param name="Name">Имя параметра</param>
+            <param name="Value">Значение параметра</param>
+            <param name="Type">Тип параметра</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType,System.Data.ParameterDirection)">
+            <summary>
+            Добавляет новый параметр в лист SqlParameter
+            </summary>
+            <param name="Name">Имя параметра</param>
+            <param name="Value">Значение параметра</param>
+            <param name="Type">Тип параметра</param>
+            <param name="Direction">"Направление" параметра (input, output, ...)</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.String,System.String,System.Data.SqlDbType,System.Data.ParameterDirection,System.Boolean)">
+            <summary>
+            Добавляет новый параметр в лист SqlParameter
+            </summary>
+            <param name="Name">Имя параметра</param>
+            <param name="Value">Значение параметра</param>
+            <param name="Type">Тип параметра</param>
+            <param name="Direction">"Направление" параметра (input, output, ...)</param>
+            <param name="IsNullable">Флаг возможности значения "null"</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.AddParameter(System.Data.SqlClient.SqlParameter)">
+            <summary>
+            Добавляет новый параметр в лист SqlParameter
+            </summary>
+            <param name="sqlParameter">Готовый параметр</param>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.CreateParameter(System.String,System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean)">
+            <summary>
+            Создает новый SqlParameter
+            </summary>
+            <param name="Name"></param>
+            <param name="Value"></param>
+            <param name="Type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.ClearParameters">
+            <summary>
+            Очистка листа параметров
+            </summary>
+        </member>
+        <member name="M:ALG.DataAccessLayer.Parameters.GetParameterByName(System.String)">
+            <summary>
+            Возвращает параметр по имени
+            </summary>
+            <param name="Name">Имя параметра</param>
+            <returns></returns>
+        </member>
+        <member name="P:ALG.DataAccessLayer.Parameters.GetParameters">
+            <summary>
+            Возвращает лист SqlParameter
             </summary>
         </member>
     </members>
